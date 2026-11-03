@@ -166,7 +166,12 @@ def validate_manifest(manifest, state):
         if (info['DeviceClass'].lower() != expected['hardware']
                 or candidate.get('Ap,ProductType', expected['product']) != expected['product']):
             continue
-        if info.get('Variant') not in {'Customer Erase Install (IPSW)', 'Customer Upgrade Install (IPSW)'}:
+        if info.get('Variant') not in {
+            'Customer Erase Install (IPSW)',
+            'Customer Upgrade Install (IPSW)',
+            'Developer Erase Install (IPSW)',
+            'Developer Upgrade Install (IPSW)',
+        }:
             continue
         component = candidate.get('Manifest')
         for part in ('OS', 'Info'):
