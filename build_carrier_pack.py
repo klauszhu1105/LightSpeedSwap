@@ -83,7 +83,7 @@ def build_pack(request, output):
             image = encrypted.with_suffix('')
             payloads.ensure(image.is_file(), 'Decrypted firmware image was not produced.')
             encrypted.unlink()
-        bundles = payloads.extract_files(image, work, work)
+        bundles = payloads.extract_files(image, work, work, build=state.build)
         payloads.save_payload(work, state, manifest_bytes, url, bundles)
         prepared = work / 'artifact'
         prepared.mkdir()

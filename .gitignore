@@ -10,3 +10,12 @@ carrier-diagnostic*.json
 *.aea
 *.ipsw
 *.log
+
+# Local environments and firmware extraction
+.venv/
+.lightspeed-firmware-*/
+*.ipsw
+*.dmg
+__pycache__/
+.carrier-cache/
+.carrier-state/

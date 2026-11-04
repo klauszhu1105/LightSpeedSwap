@@ -1,0 +1,1110 @@
+{
+  "tool_release": "LightSpeedSwap 0.7.3",
+  "operation": "read_only_diagnose",
+  "started_utc": "2026-11-03T23:33:49.966683+00:00",
+  "before": {
+    "tool_release": "LightSpeedSwap 0.7.3",
+    "product": "iPhone19,3",
+    "hardware": "V64AP",
+    "version": "27.2",
+    "build": "24B119",
+    "carrier_rows": [
+      {
+        "bundle": "com.apple.TMobile_Wholesale_US",
+        "version": "73.0",
+        "mcc": "310",
+        "mnc": "240",
+        "slot": "kOne"
+      },
+      {
+        "bundle": "com.apple.Verizon_LTE_US",
+        "version": "73.0",
+        "mcc": "311",
+        "mnc": "480",
+        "slot": "kTwo"
+      }
+    ],
+    "imsi_available": true,
+    "iccid_available": true,
+    "gid1": "6910",
+    "selected_slot": "kOne",
+    "carrier_info_key_names": [
+      "BootstrapType",
+      "CFBundleIdentifier",
+      "CFBundleVersion",
+      "GID1",
+      "GID2",
+      "IntegratedCircuitCardIdentity",
+      "InternationalMobileSubscriberIdentity",
+      "MCC",
+      "MNC",
+      "SIMGID1",
+      "SIMGID2",
+      "Slot",
+      "kCTPostponementInfoAvailable"
+    ]
+  },
+  "privacy": "Only carrier-related CommCenter messages are retained. Full known SIM/device identifiers and common identifier patterns are redacted. Review before sharing.",
+  "gid1_source": "paired_metadata",
+  "trace": {
+    "status": "stream_error",
+    "historical_requested": true,
+    "note": "Events can predate this command; absent or private logs prove nothing.",
+    "events": [
+      {
+        "timestamp": "2026-11-03T18:34:21.901058",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26275072,
+        "category": "cb.server",
+        "message": "Received command at the server: kOverlayBundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:21.901088",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26288776,
+        "category": "cb.server",
+        "message": "OverlayBundle request kCarrier bundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:21.901118",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  IntegratedCircuitCardIdentity = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:21.901141",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  GID1 = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:21.901164",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  GID2 = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:21.901233",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  InternationalMobileSubscriberIdentity = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:21.912415",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21294756,
+        "category": "cb.man",
+        "message": "------------ Device Overlay ------------"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:21.913106",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21329724,
+        "category": "cb.overlay",
+        "message": "Loading carrier file <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:21.913126",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21330024,
+        "category": "cb.overlay",
+        "message": "Overlay key: '<private>'"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:21.913255",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6096740,
+        "category": "cb.overlay",
+        "message": "Overridden filename prefix: <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:21.913313",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6096852,
+        "category": "cb.overlay",
+        "message": "Current carrier file path name: <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:21.914228",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6097732,
+        "category": "cb.overlay",
+        "message": "Overridden carrier file path name: <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:21.921843",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6098640,
+        "category": "cb.overlay",
+        "message": "Overridden file <private> already exists, not generating again"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:21.921857",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21330188,
+        "category": "cb.overlay",
+        "message": "Comparing the already present plist with the overlay dict because we are using new signatures"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:21.922494",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21294980,
+        "category": "cb.man",
+        "message": "Device overlay decision: kOverrideBundleSuccess"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:21.922988",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21295040,
+        "category": "cb.man",
+        "message": "------------ MVNO Overlay ------------"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:21.923174",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21287276,
+        "category": "cb.overlay",
+        "message": "Loading carrier file <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:21.923198",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6106868,
+        "category": "cb.overlay",
+        "message": "There is no <private> in the base bundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.015370",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6105324,
+        "category": "cb.overlay",
+        "message": "There is no merged <private> overlay configuration"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.015528",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21287944,
+        "category": "cb.overlay",
+        "message": "No overlay matching key, marking override not required"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.015536",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21295164,
+        "category": "cb.man",
+        "message": "MVNO overlay decision: kOverrideNotRequired"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.015951",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21295840,
+        "category": "cb.man",
+        "message": "GSMA settings key explicitly not set to true in bundle. Not applying GSMA Overlay"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.016183",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26288776,
+        "category": "cb.server",
+        "message": "OverlayBundle response kCarrier bundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.016211",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  kCarrierFilePathName = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.016217",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289576,
+        "category": "cb.server",
+        "message": "  kLinkingPath ="
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.016245",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289576,
+        "category": "cb.server",
+        "message": "  kBundleVersion = 73.0"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.016263",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289284,
+        "category": "cb.server",
+        "message": "  kBundleTechnologyType = 1"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.016279",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  kMatchedPath = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.016284",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289576,
+        "category": "cb.server",
+        "message": "  kResolvedPath = /System/Library/Carrier Bundles/iPhone/TMobile_MVNO_US.bundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.016290",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289576,
+        "category": "cb.server",
+        "message": "  kBundleIdentifier = com.apple.TMobile_MVNO_US"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.016295",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289576,
+        "category": "cb.server",
+        "message": "  kPrefFile ="
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.016301",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  kNameOfBundle = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.016385",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26275072,
+        "category": "cb.server",
+        "message": "Received command at the server: kOverlayBundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.016420",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26288776,
+        "category": "cb.server",
+        "message": "OverlayBundle request kCarrier bundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.016496",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  IntegratedCircuitCardIdentity = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.016508",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  GID1 = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.016513",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  GID2 = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.016518",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  InternationalMobileSubscriberIdentity = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.016884",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21294756,
+        "category": "cb.man",
+        "message": "------------ Device Overlay ------------"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.018066",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21329724,
+        "category": "cb.overlay",
+        "message": "Loading carrier file <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.018071",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21330024,
+        "category": "cb.overlay",
+        "message": "Overlay key: '<private>'"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.018123",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6096740,
+        "category": "cb.overlay",
+        "message": "Overridden filename prefix: <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.018142",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6096852,
+        "category": "cb.overlay",
+        "message": "Current carrier file path name: <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.028374",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6097732,
+        "category": "cb.overlay",
+        "message": "Overridden carrier file path name: <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.029417",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6098640,
+        "category": "cb.overlay",
+        "message": "Overridden file <private> already exists, not generating again"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.029426",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21330188,
+        "category": "cb.overlay",
+        "message": "Comparing the already present plist with the overlay dict because we are using new signatures"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.029811",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21294980,
+        "category": "cb.man",
+        "message": "Device overlay decision: kOverrideBundleSuccess"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.029822",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21295040,
+        "category": "cb.man",
+        "message": "------------ MVNO Overlay ------------"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.029856",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21287276,
+        "category": "cb.overlay",
+        "message": "Loading carrier file <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.029927",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6106868,
+        "category": "cb.overlay",
+        "message": "There is no <private> in the base bundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.029931",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6105324,
+        "category": "cb.overlay",
+        "message": "There is no merged <private> overlay configuration"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.029942",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21287944,
+        "category": "cb.overlay",
+        "message": "No overlay matching key, marking override not required"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030081",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21295164,
+        "category": "cb.man",
+        "message": "MVNO overlay decision: kOverrideNotRequired"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030123",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21295840,
+        "category": "cb.man",
+        "message": "GSMA settings key explicitly not set to true in bundle. Not applying GSMA Overlay"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030211",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26288776,
+        "category": "cb.server",
+        "message": "OverlayBundle response kCarrier bundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030219",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  kCarrierFilePathName = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030231",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289576,
+        "category": "cb.server",
+        "message": "  kLinkingPath ="
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030235",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289576,
+        "category": "cb.server",
+        "message": "  kBundleVersion = 73.0"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030240",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289284,
+        "category": "cb.server",
+        "message": "  kBundleTechnologyType = 1"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030248",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  kMatchedPath = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030351",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289576,
+        "category": "cb.server",
+        "message": "  kResolvedPath = /System/Library/Carrier Bundles/iPhone/Verizon_LTE_US.bundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030360",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289576,
+        "category": "cb.server",
+        "message": "  kBundleIdentifier = com.apple.Verizon_LTE_US"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030376",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289576,
+        "category": "cb.server",
+        "message": "  kPrefFile ="
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030386",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  kNameOfBundle = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030957",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26275072,
+        "category": "cb.server",
+        "message": "Received command at the server: kLookupBundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030962",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26288776,
+        "category": "cb.server",
+        "message": "Lookup request kCarrier bundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030966",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  GID1 = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030971",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  GID2 = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030975",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  InternationalMobileSubscriberIdentity = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030980",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21265928,
+        "category": "cb.man",
+        "message": "================================= Lookup Bundle for kCarrier ================================="
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030985",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21266356,
+        "category": "cb.man",
+        "message": "---Begin Carrier Info for Bundle Matching---"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030989",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21266440,
+        "category": "cb.man",
+        "message": "Number of key-values: 3"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030994",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21267204,
+        "category": "cb.man",
+        "message": "GID1 = '<private>'"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.030999",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21267508,
+        "category": "cb.man",
+        "message": "GID2 = '<private>'"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.031003",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21267964,
+        "category": "cb.man",
+        "message": "IMSI = '<private>'"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.031014",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21268328,
+        "category": "cb.man",
+        "message": "---End of Carrier Info---"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.031036",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21263776,
+        "category": "cb.man",
+        "message": "********** System Bundle Lookup *********"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.031046",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21268944,
+        "category": "cb.man",
+        "message": "Provided match prefix to search based on SIM information: <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.031060",
+        "level": "DEBUG",
+        "image": "CoreFoundation",
+        "image_offset": 545384,
+        "category": "User Defaults",
+        "message": "looked up value <private> for key <private> in CFPrefsPlistSource<0x80000759cdbc000> (Domain: com.apple.commcenter.carrier_bundle, User: kCFPreferencesCurrentUser, ByHost: No, Container: (null), Contents Need Refresh: No (Cached: 2, Newest: 2, Index: 1681)"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.042211",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21271784,
+        "category": "cb.man",
+        "message": "Returning bundle match: Matches: [Name: /System/Library/Carrier Bundles/iPhone/315010, Score: 59.00, include cookie: true], [Name: /System/Library/Carrier Bundles/iPhone/315010, Score: 59.00, include cookie: false]"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.042235",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21263940,
+        "category": "cb.man",
+        "message": "*********** User Bundle Lookup **********"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.042247",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21268944,
+        "category": "cb.man",
+        "message": "Provided match prefix to search based on SIM information: <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.042253",
+        "level": "DEBUG",
+        "image": "CoreFoundation",
+        "image_offset": 545384,
+        "category": "User Defaults",
+        "message": "looked up value <private> for key <private> in CFPrefsPlistSource<0x80000759cdbc000> (Domain: com.apple.commcenter.carrier_bundle, User: kCFPreferencesCurrentUser, ByHost: No, Container: (null), Contents Need Refresh: No (Cached: 2, Newest: 2, Index: 1681)"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.042266",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 14987504,
+        "category": "cb.man",
+        "message": "No potential candidates found in the cache for carrier bundles."
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.042270",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21271444,
+        "category": "cb.man",
+        "message": "No candidates in the candidate list"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.042277",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21271784,
+        "category": "cb.man",
+        "message": "Returning bundle match: Matches: [Name: , Score: 0.00, include cookie: true], [Name: , Score: 0.00, include cookie: false]"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.042292",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21264648,
+        "category": "cb.man",
+        "message": "No match in user's, choosing System match"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.042302",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21265236,
+        "category": "cb.man",
+        "message": "Best match URL: <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.043308",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26288776,
+        "category": "cb.server",
+        "message": "Lookup response kCarrier bundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.043320",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289576,
+        "category": "cb.server",
+        "message": "  kBundleVersion = 73.0"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.043333",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289284,
+        "category": "cb.server",
+        "message": "  kBundleTechnologyType = 1"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.043345",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  kMatchedPath = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.043354",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289576,
+        "category": "cb.server",
+        "message": "  kResolvedPath = /System/Library/Carrier Bundles/iPhone/NonPublicNetwork.bundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.043385",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289576,
+        "category": "cb.server",
+        "message": "  kBundleIdentifier = com.apple.NonPublicNetwork"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.043459",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  kNameOfBundle = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.043495",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26275072,
+        "category": "cb.server",
+        "message": "Received command at the server: kOverlayBundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.043527",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26288776,
+        "category": "cb.server",
+        "message": "OverlayBundle request kCarrier bundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.043630",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  GID1 = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.043664",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  GID2 = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.043708",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  InternationalMobileSubscriberIdentity = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.043780",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21294756,
+        "category": "cb.man",
+        "message": "------------ Device Overlay ------------"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.043918",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21329724,
+        "category": "cb.overlay",
+        "message": "Loading carrier file <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.043927",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21330024,
+        "category": "cb.overlay",
+        "message": "Overlay key: '<private>'"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.044362",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6096740,
+        "category": "cb.overlay",
+        "message": "Overridden filename prefix: <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.044366",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6096852,
+        "category": "cb.overlay",
+        "message": "Current carrier file path name: <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.044689",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6097732,
+        "category": "cb.overlay",
+        "message": "Overridden carrier file path name: <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.044763",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6098640,
+        "category": "cb.overlay",
+        "message": "Overridden file <private> already exists, not generating again"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.044767",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21330188,
+        "category": "cb.overlay",
+        "message": "Comparing the already present plist with the overlay dict because we are using new signatures"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.045703",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21294980,
+        "category": "cb.man",
+        "message": "Device overlay decision: kOverrideBundleSuccess"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.045714",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21295040,
+        "category": "cb.man",
+        "message": "------------ MVNO Overlay ------------"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.045815",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21287276,
+        "category": "cb.overlay",
+        "message": "Loading carrier file <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.045891",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6106868,
+        "category": "cb.overlay",
+        "message": "There is no <private> in the base bundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.045917",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6105324,
+        "category": "cb.overlay",
+        "message": "There is no merged <private> overlay configuration"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.045926",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21287944,
+        "category": "cb.overlay",
+        "message": "No overlay matching key, marking override not required"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.045935",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21295164,
+        "category": "cb.man",
+        "message": "MVNO overlay decision: kOverrideNotRequired"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.046791",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 21295840,
+        "category": "cb.man",
+        "message": "GSMA settings key explicitly not set to true in bundle. Not applying GSMA Overlay"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.050530",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26288776,
+        "category": "cb.server",
+        "message": "OverlayBundle response kCarrier bundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.050777",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289736,
+        "category": "cb.server",
+        "message": "  kCarrierFilePathName = <private>"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.050911",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289576,
+        "category": "cb.server",
+        "message": "  kLinkingPath ="
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.050983",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 26289576,
+        "category": "cb.server",
+        "message": "  kBundleVersion = 73.0"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.054575",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6738448,
+        "category": "lazuli.prov.ctr.1",
+        "message": "--> IMSI: OK, IMEI: OK, PH#: OK, sms online: true, GID1: OK, GID2: (empty), carrier based: false, buddy: kFinished, URL: config.rcs.mnc240.mcc310.jibecloud.net (kEntitlement)"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.054625",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6738448,
+        "category": "lazuli.prov.ctr.2",
+        "message": "--> IMSI: OK, IMEI: OK, PH#: OK, sms online: true, GID1: OK, GID2: OK, carrier based: false, buddy: kFinished, URL: config.rcs.mnc480.mcc311.jibecloud.net (kCarrierBundle)"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.073101",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6738448,
+        "category": "lazuli.cache.1",
+        "message": "--> IMSI: OK, IMEI: OK, PH#: OK, sms online: true, GID1: OK, GID2: (empty), carrier based: false, buddy: kFinished, URL: config.rcs.mnc240.mcc310.jibecloud.net (kEntitlement)"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.074202",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 11812640,
+        "category": "lazuli.cache.2",
+        "message": "Final URL after filling in MCC/MNC template: config.rcs.mnc480.mcc311.jibecloud.net, Source: kCarrierBundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.074274",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6738448,
+        "category": "lazuli.cache.2",
+        "message": "--> IMSI: OK, IMEI: OK, PH#: OK, sms online: true, GID1: OK, GID2: OK, carrier based: false, buddy: kFinished, URL: config.rcs.mnc480.mcc311.jibecloud.net (kCarrierBundle)"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.359692",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6738448,
+        "category": "lazuli.cache.1",
+        "message": "--> IMSI: OK, IMEI: OK, PH#: OK, sms online: true, GID1: OK, GID2: (empty), carrier based: false, buddy: kFinished, URL: config.rcs.mnc240.mcc310.jibecloud.net (kEntitlement)"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.360477",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 11812640,
+        "category": "lazuli.cache.2",
+        "message": "Final URL after filling in MCC/MNC template: config.rcs.mnc480.mcc311.jibecloud.net, Source: kCarrierBundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.360520",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6738448,
+        "category": "lazuli.cache.2",
+        "message": "--> IMSI: OK, IMEI: OK, PH#: OK, sms online: true, GID1: OK, GID2: OK, carrier based: false, buddy: kFinished, URL: config.rcs.mnc480.mcc311.jibecloud.net (kCarrierBundle)"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.392264",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6738448,
+        "category": "lazuli.cache.1",
+        "message": "--> IMSI: OK, IMEI: OK, PH#: OK, sms online: true, GID1: OK, GID2: (empty), carrier based: false, buddy: kFinished, URL: config.rcs.mnc240.mcc310.jibecloud.net (kEntitlement)"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.394207",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 11812640,
+        "category": "lazuli.cache.2",
+        "message": "Final URL after filling in MCC/MNC template: config.rcs.mnc480.mcc311.jibecloud.net, Source: kCarrierBundle"
+      },
+      {
+        "timestamp": "2026-11-03T18:34:22.394259",
+        "level": "NOTICE",
+        "image": "CommCenter",
+        "image_offset": 6738448,
+        "category": "lazuli.cache.2",
+        "message": "--> IMSI: OK, IMEI: OK, PH#: OK, sms online: true, GID1: OK, GID2: OK, carrier based: false, buddy: kFinished, URL: config.rcs.mnc480.mcc311.jibecloud.net (kCarrierBundle)"
+      }
+    ],
+    "event_limit": 400,
+    "discarded_older_events": 0,
+    "error": "ConnectionTerminatedError: Connection was terminated abruptly."
+  },
+  "after_error": "DeviceNotFoundError: Device not found: usbmux has no device matching udid <device/SIM identifier redacted> over USB",
+  "finished_utc": "2026-11-03T23:34:22.639484+00:00",
+  "interpretation": "GID1 from paired metadata can be used by switch automatically. Log values may be historical, redacted, or unrelated to the current SIM and are not used automatically. Installation and activation remain separate."
+}

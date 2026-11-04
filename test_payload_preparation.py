@@ -67,7 +67,7 @@ class PreparationStorageContracts(unittest.TestCase):
             args = [str(a) for a in args]
             if 'aea' in args:
                 Path(args[3]).with_suffix('').write_bytes(b'decrypted fixture')
-        def fake_extract(image, work):
+        def fake_extract(image, work, *, build=None):
             self.assertFalse(image.with_suffix('.dmg.aea').exists())
             if cleanup_uncertain:
                 (work / 'mount-state-uncertain.txt').write_text('uncertain')

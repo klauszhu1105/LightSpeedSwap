@@ -91,7 +91,7 @@ class MissingPayload(ValueError):
     pass
 
 
-def validate_files(target, files):
+def validate_files(target, files, *, build=None):
     ensure(target in NAMES, 'Unknown carrier target.')
     ensure(isinstance(files, dict) and 'Info.plist' in files, 'Missing carrier Info.plist.')
     info = plistlib.loads(files['Info.plist'])
@@ -100,7 +100,7 @@ def validate_files(target, files):
     ensure(info.get('CFBundleDeviceFamily') == 'iPhone', "The bundle is not for iPhone.")
     ensure(re.fullmatch(r'[0-9]+(?:\.[0-9]+){0,3}', str(info.get('CFBundleVersion', ''))),
            "Missing carrier bundle version.")
-    signatures = check_signatures(files)
+    signatures = check_signatures(files, build=build)
     ensure(all(v['signature_valid'] for v in signatures.values()), "An Apple carrier signature failed verification.")
     return info, signatures
 
@@ -115,7 +115,7 @@ def validate_entry(state, entry, objects):
     for target in NAMES:
         metadata = entry['bundles'][target]
         files = {name: objects[sha] for name, sha in metadata['files'].items()}
-        info, groups = validate_files(target, files)
+        info, groups = validate_files(target, files, build=state.build)
         ensure(metadata['version'] == info['CFBundleVersion'] and metadata['signature_groups'] == sorted(groups),
                'Bundle metadata does not match its signed files.')
         overrides = set(groups) - {'common'}
@@ -197,7 +197,7 @@ def save_payload(root, state, manifest_bytes, source, bundles, origin='firmware'
     objects = {record['manifest']: manifest_bytes}
     for target in NAMES:
         files = bundles[target]
-        info, signatures = validate_files(target, files)
+        info, signatures = validate_files(target, files, build=state.build)
         record['bundles'][target] = {'version': info['CFBundleVersion'], 'signature_groups': sorted(signatures),
                                      'files': {name: store.digest(data) for name, data in sorted(files.items())}}
         objects.update({store.digest(data): data for data in files.values()})
@@ -220,7 +220,7 @@ def import_carrier_updates(root, state, mvno, wholesale):
     floor = max(version_tuple(active_version), *(version_tuple(plistlib.loads(f['Info.plist'])['CFBundleVersion'])
                                                for f in previous.values()))
     for target, files in bundles.items():
-        info, _ = validate_files(target, files)
+        info, _ = validate_files(target, files, build=state.build)
         ensure(version_tuple(info['CFBundleVersion']) >= floor,
                'Carrier update pair would downgrade an active or cached bundle.')
         if 'MinimumOSVersion' in info:
@@ -314,7 +314,7 @@ def find_one(work, filename):
     return matches[0]
 
 
-def extract_macos(image, work):
+def extract_macos(image, work, *, build=None):
     mount = Path(work) / 'mount'
     mount.mkdir()
     # No installer is run: this is only a read-only mount of a downloaded image.
@@ -326,7 +326,7 @@ def extract_macos(image, work):
         base = mount / 'System/Library/Carrier Bundles/iPhone'
         bundles = {target: read_package(base / (name + '.bundle'))[1] for target, name in NAMES.items()}
         for target, files in bundles.items():
-            validate_files(target, files)
+            validate_files(target, files, build=build)
         return bundles
     finally:
         # Do not force a detach or delete a possibly still mounted image.
@@ -334,13 +334,13 @@ def extract_macos(image, work):
         marker.unlink()
 
 
-def extract_files(image, work, root):
+def extract_files(image, work, root, *, build=None):
     if platform.system() == 'Darwin':
-        return extract_macos(image, work)
+        return extract_macos(image, work, build=build)
     from carrier_native import extract, prepare_tool
     bundles = extract(image, work, prepare_tool(root, get_bytes, '7zip'), NAMES)
     for target, files in bundles.items():
-        validate_files(target, files)
+        validate_files(target, files, build=build)
     return bundles
 
 
@@ -377,7 +377,7 @@ def setup_device(root, state, url=None, bundle_pack=None):
             image = image.with_suffix('')
             ensure(image.is_file(), 'Decrypted firmware image was not produced.')
             image.with_suffix(image.suffix + '.aea').unlink()
-        bundles = extract_files(image, work, root)
+        bundles = extract_files(image, work, root, build=state.build)
         destination = save_payload(root, state, manifest_bytes, url, bundles)
         print('Verified both original Apple-signed bundles and cached them in one compressed store. Ready to switch.', flush=True)
         return destination

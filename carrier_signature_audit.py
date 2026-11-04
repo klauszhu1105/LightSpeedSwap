@@ -28,6 +28,13 @@ APPLE_PRODUCTION_P384 = bytes.fromhex(
     "ed7796dd138d3b8550e4eef9cf53490059e615cd260ed0d53f37c781ebd92efdd"
     "7c6779afa27cf617269d603a2eb544a61c45dfcd337643ebb4f28b548eaa97"
 )
+# Public P-384 point at extracted dylib offset 0xfdba in 24C5037i SystemOS.
+APPLE_24C5037I_P384 = bytes.fromhex(
+    "0491fd89e6c211bbce45f3eabc9555433ea1731e77341fc6f8c794ffc8b6248c"
+    "78dbd0b00b7ec0c8932d1ad0a9ba6bc12f2c0098a2cf64f61f6aa77d3273276e"
+    "cc70f83e9676a4a8237d3336ecafc64c888968a8ce3c1635c321b3e57954ad93"
+    "43"
+)
 MAX_BYTES = 10 * 1024 * 1024
 
 
@@ -93,7 +100,7 @@ def canonical_file(name, data):
     return data
 
 
-def check_signatures(files):
+def check_signatures(files, *, build=None):
     if (not isinstance(files, dict) or not files or len(files) > 100
             or not all(isinstance(n, str) and n and isinstance(v, bytes) for n, v in files.items())
             or sum(map(len, files.values())) > MAX_BYTES):
@@ -110,7 +117,8 @@ def check_signatures(files):
     actual_signatures = {n for n in files if n.startswith("signatures/")}
     if expected_signatures != actual_signatures:
         raise ValueError("Signature files do not correspond exactly to the payload groups")
-    key = ec.EllipticCurvePublicKey.from_encoded_point(ec.SECP384R1(), APPLE_PRODUCTION_P384)
+    public_point = APPLE_24C5037I_P384 if build == "24C5037i" else APPLE_PRODUCTION_P384
+    key = ec.EllipticCurvePublicKey.from_encoded_point(ec.SECP384R1(), public_point)
     results = {}
     digests = {}
     for group in ["common"] + sorted(set(grouped) - {"common"}):

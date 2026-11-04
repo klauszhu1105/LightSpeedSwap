@@ -79,7 +79,7 @@ class PackPreparationContracts(unittest.TestCase):
                 return {'bytes': 17, 'sha256': store.digest(b'encrypted fixture'), 'crc32': 'fixture'}
         def decrypt(args):
             Path(args[3]).with_suffix('').write_bytes(b'decrypted fixture')
-        def extract(image, work):
+        def extract(image, work, *, build=None):
             self.assertEqual(image.read_bytes(), b'decrypted fixture')
             self.assertFalse(image.with_suffix('.dmg.aea').exists())
             if mount_failure:
