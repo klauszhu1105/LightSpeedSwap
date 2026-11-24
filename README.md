@@ -26,6 +26,217 @@ CarrierSIM reports its AirTraffic method blocked beginning with iOS 27.2 beta 3
 (24B5099f). LightSpeedSwap uses a separate paired IPCC installation route with
 the original signed carrier files. It does not modify the signed settings.
 
+## Step-by-step usage guide (this fork)
+
+LightSpeedSwap is an upstream project by
+[ThomasPServo](https://github.com/ThomasPServo/LightSpeedSwap). This fork adds the
+following walkthrough; the upstream instructions, limitations, release links,
+and dependency credits are retained below. Read the important note above before
+installing carrier settings.
+
+### 1. Initialize macOS and check the phone
+
+Use Terminal on an Intel or Apple Silicon Mac with Python 3.9+ available as
+`python3`. If it is missing, install Python 3.12 from
+[python.org](https://www.python.org/downloads/macos/) first. Download the upstream
+CLI and checksum into a dedicated folder, verify them, then initialize the private
+runtime (network access is required):
+
+```sh
+mkdir -p ~/Downloads/LightSpeedSwap
+cd ~/Downloads/LightSpeedSwap
+curl -fL -o LightSpeedSwap.pyz https://github.com/ThomasPServo/LightSpeedSwap/releases/latest/download/LightSpeedSwap.pyz
+curl -fL -o SHA256SUMS.txt https://github.com/ThomasPServo/LightSpeedSwap/releases/latest/download/SHA256SUMS.txt
+shasum -a 256 -c SHA256SUMS.txt
+python3 LightSpeedSwap.pyz setup
+python3 LightSpeedSwap.pyz doctor
+```
+
+Stop if checksum verification fails. `setup` prepares the runtime and dependencies;
+it does not prepare firmware or write to a phone. No manual `sudo`, Homebrew,
+Rust, or OpenSSL development installation is required. For a source checkout,
+run `python3 launcher.py setup` in the repository and replace
+`python3 LightSpeedSwap.pyz` below with `python3 launcher.py`. The source launcher
+and zipapp use different default state directories; keep using the same entry
+point so your cache and restoration receipts stay together.
+
+Connect the iPhone by USB, unlock it, accept **Trust This Computer**, and run:
+
+```sh
+python3 LightSpeedSwap.pyz status
+```
+
+Record the four public firmware fields: `product`, `hardware`, `version`, and
+`build`. Also check `carrier_rows` for each line's `slot`, `bundle`, and carrier
+`version`; the carrier version is different from the iOS version. A
+`needs_setup_or_repair` payload status means the resources need preparation or
+repair before switching.
+
+For dual SIM, copy the exact `slot` value for the intended US Mobile Light Speed
+line. **`kOne` below is only an example, not a universal slot number.** Replace it
+in every command for your line, including preparation, switching, and reverting:
+
+```sh
+python3 LightSpeedSwap.pyz status --slot kOne
+```
+
+Do not select a regular T-Mobile, AT&T, or Verizon line. If the CLI reports an
+ambiguous second T-Mobile line or incomplete selector metadata, temporarily
+disable the other line on the phone and check status again. Do not guess SIM IDs
+or GID1 to bypass a refusal.
+
+### 2. Prepare an exact-build carrier pack with GitHub Actions
+
+A `.carrierpack` contains both original signed MVNO and Wholesale bundles for an
+exact **product + hardware board + iOS version + build**. A matching iOS version
+alone is insufficient. Preparation is host-only; it does not switch the phone.
+
+In **your fork**, open [Actions → Prepare carrier pack](https://github.com/klauszhu1105/LightSpeedSwap/actions/workflows/carrier-pack.yml).
+Enable workflows if GitHub prompts you, choose **Run workflow**, select the branch
+containing the workflow, and enter the following fields. You need write access
+to run it; no phone connection or Apple ID is needed on the runner.
+
+| Workflow input | Example only | How to choose |
+| --- | --- | --- |
+| `host` | `macos-26` | Use an offered runner option; this is the default. |
+| `product` | `iPhone19,3` | Copy `product` from local `status`. |
+| `hardware` | `V64AP` | Copy `hardware` from local `status`. |
+| `version` | `27.3` | Copy the exact iOS `version` from `status`. |
+| `build` | `24C5049d` | Copy the exact `build`, including its suffix. |
+| `firmware_url` | Official Apple URL below | Use the public HTTPS IPSW URL for that exact firmware, or leave blank for exact-build lookup. |
+
+For the **24C5049d / iPhone19,3 / V64AP / iOS 27.3 example only**, the supplied
+Apple IPSW URL is:
+
+```text
+https://updates.cdn-apple.com/2026FallSeed/dd121378-fe01-45c8-8fe8-7c16b8b577b8/iPhone19,2,iPhone19,3,iPhone19,7_27.3_24C5049d_Restore.ipsw
+```
+
+**These are not universal parameters or a claim of on-phone validation.** Use
+them only when all four fields match your connected phone. The shared IPSW
+filename lists several products; it does not make their hardware boards
+interchangeable. The builder checks the actual manifest, board, and signatures
+and stops on a mismatch. A beta/RC may be absent from the lookup index, which is
+when supplying its official URL is useful. Do not substitute a nearby build or
+an unofficial mirror. Workflow URLs must be public and have no query parameters,
+credentials, or access tokens.
+
+Run the workflow and wait for the **prepare** job to succeed. Open the completed
+run and download its **Artifacts → `LightSpeedSwap-carrier-pack-<run-id>`** ZIP.
+Artifacts expire after **14 days**. This downloads the small verified pack and
+receipts, not the IPSW. An ordinary README commit does not trigger firmware
+preparation; use **Run workflow** for this procedure.
+
+### 3. Verify the artifact and import it locally
+
+Unzip the artifact into a local folder. It contains one `.carrierpack`,
+`provenance.json`, and `SHA256SUMS.txt`. In Terminal, change to that extracted
+folder and run:
+
+```sh
+shasum -a 256 -c SHA256SUMS.txt
+```
+
+Check that `provenance.json` records the expected four identity fields, source
+URL, and workflow commit. A checksum detects changed bytes; it does not establish
+that an untrusted pack's firmware labels are truthful. Use a pack from your own
+verified workflow run or another trusted source.
+
+Return to the folder containing `LightSpeedSwap.pyz`, keep the matching phone
+connected, and import the **unpacked file**, not the artifact ZIP. Replace the
+path and slot below with your actual values:
+
+```sh
+python3 LightSpeedSwap.pyz setup-device --slot kOne --bundle-pack "$HOME/Downloads/prepared-pack/LightSpeedSwap-iPhone19-3-v64ap-27.3-24C5049d.carrierpack"
+python3 LightSpeedSwap.pyz status --slot kOne
+```
+
+The builder normalizes the board to lowercase (`v64ap`) in metadata and the pack
+filename; GitHub's artifact name is different. Import checks the connected
+phone's exact identity and the signed files again, caches both directions, and performs no phone write or
+firmware download. You do not need to copy the IPSW onto the Mac.
+
+Alternatively, prepare locally with `python3 LightSpeedSwap.pyz setup-device
+--slot kOne`, adding `--firmware-url '<official Apple HTTPS IPSW URL>'` when
+needed. Do not combine `--firmware-url` and `--bundle-pack`. Local extraction can
+download several GB and needs about **25 GiB or more** of temporary space;
+Actions avoids that local firmware workload. Already available exact-build
+payloads may be reused by local `setup-device`.
+
+### 4. Switch, verify, and return
+
+```sh
+python3 LightSpeedSwap.pyz switch --slot kOne --to wholesale
+python3 LightSpeedSwap.pyz status --slot kOne
+```
+
+Allow the restart, unlock the phone after it boots, and verify the selected line's
+bundle **and version**. Check calls, data, and IMS service on the phone. An artifact
+build or an accepted installation alone does not prove activation, SA, UC, or
+network priority. Service may be interrupted during the change. On a timeout or
+unconfirmed result, reconnect and run `status` before another switch.
+
+To explicitly select MVNO, or instead return to the original bundle recorded for
+this same SIM, choose the appropriate command:
+
+```sh
+# Explicitly select MVNO:
+python3 LightSpeedSwap.pyz switch --slot kOne --to mvno
+# Alternatively, restore this SIM's recorded original bundle:
+python3 LightSpeedSwap.pyz revert --slot kOne
+```
+
+`revert` requires the original host restoration receipt; it refuses if the
+baseline is unknown. **It restores the bundle choice, not a clean uninstall**:
+the installed SIM-specific selector can remain and affect future carrier updates.
+Neither returning to MVNO nor reverting requires replacing the eSIM. Keep the
+state directory and its receipts. `--no-reboot` leaves a manual restart pending;
+`--reinstall` is an explicit switch option, not a way to bypass downgrade checks.
+
+### 5. After an iOS update, refresh resources; clean up deliberately
+
+After upgrading iOS, run `status` again and use the **new** four identity fields
+to prepare/import a matching pack (or rerun local `setup-device`). Then run
+`switch --slot kOne --to wholesale` or `--to mvno` as desired and verify with
+`status`. Do not reuse the example build or an old pack for a new build. An
+already active target can still need newer carrier files. The CLI refuses older
+carrier versions; if a carrier-only update is newer than the firmware's files,
+see [iOS and carrier updates](#ios-and-carrier-updates) for signed update pairs.
+
+```sh
+python3 LightSpeedSwap.pyz cache info
+# Discard only an unfinished large firmware download:
+python3 LightSpeedSwap.pyz cache clear-download
+# Clear only the downloaded/prepared bundle cache:
+python3 LightSpeedSwap.pyz cache clear
+```
+
+These two clear commands preserve restoration receipts and do not undo a switch
+on the phone. `cache clear` keeps included payloads; `clear-download` keeps
+verified bundles. An interrupted local download normally resumes when you rerun
+`setup-device`, so clear it only when you intend to discard progress. Successful
+preparation removes temporary expanded images unless macOS unmount cleanup is
+unconfirmed; follow any reported retained-image path and confirm it is unmounted
+before removing it. Manually exported packs and downloaded artifact ZIPs are
+separate files you can delete when no longer needed. Do not delete the entire
+state directory to clear a firmware download.
+
+### Safety and sharing limits
+
+Only use an eligible, paired phone and the intended line. Signature, manifest,
+identity, and downgrade refusals are safety boundaries; do not edit signed files
+or disable HTTPS validation. There is no backup, restore, iOS downgrade, Find My
+change, automatic OTA refresh, or guarantee that future iOS builds will work.
+
+Workflow inputs need only public firmware metadata. Never put IMSI, ICCID, UDID,
+GID1, Apple ID credentials, passwords, tokens, or private device logs in workflow
+inputs, commits, issues, or screenshots. A device-derived selector `.ipcc` from
+`prepare` contains full SIM identities and must remain private. A public firmware
+`.carrierpack` is a different format and contains no SIM selector. Do not commit
+private selectors, restoration state, credentials, generated artifacts, IPSWs,
+decrypted images, or large firmware caches. This walkthrough requires no such
+files in git.
+
 ## Download and run
 
 Download [LightSpeedSwap.pyz from the latest release](https://github.com/ThomasPServo/LightSpeedSwap/releases/latest/download/LightSpeedSwap.pyz)
